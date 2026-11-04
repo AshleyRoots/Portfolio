@@ -174,7 +174,8 @@ a:focus-visible {
   transition: color 0.2s ease;
 }
 
-.site-nav a:hover {
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
   color: var(--text);
 }
 

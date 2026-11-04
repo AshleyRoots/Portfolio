@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function ProjectCard({
   number,
@@ -33,16 +34,16 @@ function ProjectCard({
 
         <p className="project-description">{description}</p>
 
-        <a href={link} className="project-link">
+        <Link to={link} className="project-link">
           {linkText}
           <span className="visually-hidden">: {title}</span>
           <FontAwesomeIcon icon={faArrowRight} />
-        </a>
+        </Link>
       </div>
 
       <div className="project-visual">
-        <a
-          href={link}
+        <Link
+          to={link}
           className="project-visual-link"
           tabIndex={-1}
           aria-hidden="true"
@@ -71,7 +72,7 @@ function ProjectCard({
           ) : (
             <img src={image} alt="" />
           )}
-        </a>
+        </Link>
         {badge && (
           <span className="project-badge" aria-hidden="true">
             {badge}

@@ -1,25 +1,27 @@
+import { Link, NavLink } from "react-router-dom";
+
 function Header() {
   return (
     <header className="site-header">
-      <a href="/" className="site-logo">
+      <Link to="/" className="site-logo">
         <img
-          src="/images/AR-logo-vector.svg"
+          src={`${import.meta.env.BASE_URL}images/AR-logo-vector.svg`}
           alt="Ashley Roots, home"
           width="1079"
           height="727"
         />
-      </a>
+      </Link>
 
       <nav aria-label="Main">
         <ul className="site-nav">
           <li>
-            <a href="/work">Work</a>
+            <NavLink to="/work">Work</NavLink>
           </li>
           <li>
-            <a href="/lab">Lab</a>
+            <NavLink to="/lab">Lab</NavLink>
           </li>
           <li>
-            <a href="/about">About</a>
+            <NavLink to="/about">About</NavLink>
           </li>
         </ul>
       </nav>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
   // Worked out each time the page loads, so the year never goes stale
   const year = new Date().getFullYear();
@@ -9,13 +11,13 @@ function Footer() {
       <nav aria-label="Footer">
         <ul className="site-footer-nav">
           <li>
-            <a href="/work">Work</a>
+            <Link to="/work">Work</Link>
           </li>
           <li>
-            <a href="/lab">Lab</a>
+            <Link to="/lab">Lab</Link>
           </li>
           <li>
-            <a href="/about">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li>
             <a href="mailto:ashleyaroots@gmail.com">Email</a>

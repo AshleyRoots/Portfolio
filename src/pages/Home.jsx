@@ -4,7 +4,11 @@ import {
   faDownload,
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 import ProjectCard from "../components/ProjectCard";
+
+// Files in public/ live under the site's base path (/Portfolio/ on GitHub Pages)
+const base = import.meta.env.BASE_URL;
 
 function Home() {
   return (
@@ -46,7 +50,7 @@ function Home() {
 
           <img
             className="portrait"
-            src="/images/ashley-roots-portrait.png"
+            src={`${base}images/ashley-roots-portrait.png`}
             alt="Ashley Roots"
           />
         </div>
@@ -56,7 +60,7 @@ function Home() {
             View my work <FontAwesomeIcon icon={faArrowRight} />
           </a>
           <a
-            href="/Ashley-Roots-CV.pdf"
+            href={`${base}Ashley-Roots-CV.pdf`}
             className="button button--secondary"
             download
           >
@@ -76,9 +80,9 @@ function Home() {
           <span>01</span>
           <span className="section-heading-line"></span>
           <h2>Selected work</h2>
-          <a href="/work" className="view-all">
+          <Link to="/work" className="view-all">
             View all work <FontAwesomeIcon icon={faArrowRight} />
-          </a>
+          </Link>
         </div>
 
         <ProjectCard
@@ -87,7 +91,7 @@ function Home() {
           category="UX / FRONT-END / CANVAS"
           title="Redesigning the VLE experience"
           description="Canvas pathway hubs that bring core modules, skills units and this week's content into one place: one for each of seven music pathways, and a shared hub where five smaller games pathways collaborate."
-          image="/images/projects/vle-redesign.png"
+          image={`${base}images/projects/vle-redesign.png`}
           link="/work/vle-redesign"
         />
 
@@ -100,7 +104,7 @@ function Home() {
             category="LEARNING DESIGN / INTERACTION"
             title="Online learning isn't just slides"
             description="Interactive learning built around doing, not reading, like an explorable timeline of games consoles, designed to be accessible and purposeful rather than pages to click through."
-            image="/images/projects/online-learning.png"
+            image={`${base}images/projects/online-learning.png`}
             link="/work/online-learning"
           />
 
@@ -112,7 +116,7 @@ function Home() {
             category="SYSTEMS / AUTOMATION / TOOLS"
             title="Solving real problems with code"
             description="JavaScript, API integrations and Python automation that fill the gap between what the VLE does out of the box and what staff and students actually need."
-            image="/images/projects/systems.png"
+            image={`${base}images/projects/systems.png`}
             link="/work/systems"
           />
         </div>
