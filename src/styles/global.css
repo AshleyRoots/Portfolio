@@ -649,6 +649,302 @@ a:focus-visible {
 }
 
 /* ==========================================================================
+   Inner pages (About, and later Work and Lab)
+   ========================================================================== */
+
+/* Accent colour for any element, the same idea as .project--yellow etc. */
+.accent--yellow {
+  --accent: var(--yellow);
+}
+
+.accent--teal {
+  --accent: var(--teal);
+}
+
+.accent--purple {
+  --accent: var(--purple);
+}
+
+.page-intro {
+  padding: 5rem var(--gutter) 3rem;
+}
+
+.page-intro h1 {
+  max-width: 16ch;
+  margin: 1.5rem 0;
+  font-size: clamp(2.75rem, 5.5vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+/* Intro with a portrait beside it */
+.page-intro--with-image {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
+  gap: 3rem 5rem;
+  align-items: center;
+}
+
+.page-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow:
+    12px 12px 0 -1px var(--bg),
+    12px 12px 0 0 var(--accent);
+}
+
+.page-lead {
+  max-width: 640px;
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.65;
+}
+
+.page-section {
+  padding: 3rem var(--gutter);
+}
+
+/* Long-form text: comfortable line length and spacing */
+.prose {
+  max-width: 680px;
+}
+
+.prose p {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.prose p:first-child {
+  color: var(--text);
+}
+
+/* Story: heading on the left, text on the right on wide screens */
+.about-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 680px);
+  gap: 2rem 4rem;
+  align-items: start;
+}
+
+.about-story .section-heading {
+  margin-bottom: 0;
+}
+
+/* Keeps the timeline in view while the story scrolls past */
+.about-story-aside {
+  position: sticky;
+  top: 2rem;
+}
+
+/* Timeline: a fine vertical line with a dot per entry */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 2rem 0 0;
+  padding: 0 0 0 1.5rem;
+  border-left: 1px solid var(--line-strong);
+  list-style: none;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.timeline li {
+  position: relative;
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  top: 0.2rem;
+  left: calc(-1.5rem - 4px);
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--teal);
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+/* The current role gets a filled dot */
+.timeline li:last-child::before {
+  background: var(--teal);
+}
+
+.timeline li:last-child {
+  color: var(--text);
+}
+
+.timeline-year {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--teal);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+/* Outside work */
+.hobbies {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem 3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hobbies li {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.hobbies h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.hobbies p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* Principles: three cards with the offset border used on the homepage */
+.principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.principle {
+  padding: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow:
+    10px 10px 0 -1px var(--bg),
+    10px 10px 0 0 var(--accent, var(--line-strong));
+}
+
+.principle-number {
+  display: block;
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+}
+
+.principle h3 {
+  margin: 1rem 0 0.75rem;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.principle p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* "What I'm doing now": text on the left, key figures on the right */
+.about-now-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 680px) minmax(0, 1fr);
+  gap: 3rem 6rem;
+  align-items: start;
+}
+
+/* Key figures: a panel using the site's dot texture and offset border */
+.stats {
+  position: relative;
+  display: grid;
+  margin: 0;
+  padding: 0.5rem 2rem;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow:
+    12px 12px 0 -1px var(--bg),
+    12px 12px 0 0 var(--line-strong);
+}
+
+.stats::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 180px;
+  height: 120px;
+  background-image: radial-gradient(
+    circle,
+    rgba(27, 191, 174, 0.35) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 16px 16px;
+  mask-image: linear-gradient(to left, black, transparent);
+  pointer-events: none;
+}
+
+/* dt comes first in the markup so screen readers hear the label first;
+   column-reverse shows the number above it */
+.stat {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.6rem;
+  padding: 1.5rem 0;
+}
+
+.stat + .stat {
+  border-top: 1px solid var(--line);
+}
+
+.stat dd {
+  margin: 0;
+  color: var(--accent);
+  font-size: clamp(3rem, 5vw, 4.25rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.stat dt {
+  max-width: 28ch;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.about-now .prose p:first-child {
+  font-size: 1.2rem;
+}
+
+/* Two classes beat .prose p, so no !important is needed */
+.prose .about-credentials {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+/* ==========================================================================
    Footer
    ========================================================================== */
 
@@ -732,6 +1028,25 @@ a:focus-visible {
 }
 
 @media (max-width: 900px) {
+  .about-story,
+  .principles,
+  .page-intro--with-image,
+  .about-now-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hobbies {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-portrait {
+    max-width: 320px;
+  }
+
+  .about-story-aside {
+    position: static;
+  }
+
   .project--featured {
     grid-template-columns: minmax(0, 1fr);
     gap: 2.5rem;
@@ -835,6 +1150,10 @@ a:focus-visible {
   .project--compact {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .hobbies {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
