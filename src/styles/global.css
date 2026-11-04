@@ -1,0 +1,851 @@
+/* ==========================================================================
+   Global styles
+   ========================================================================== */
+
+:root {
+  --bg: #101214;
+  --surface: #181b1f;
+  --text: #f4f3ef;
+  --muted: #969ca3;
+
+  --teal: #18b6a4;
+  --purple: #9b7cff;
+  --yellow: #f2c94c;
+
+  /* Neutral lines and borders */
+  --line: #2a3036;
+  --line-strong: #3a4148;
+
+  /* Layout: overall page width, and the inner padding every section shares */
+  --page-width: min(1400px, calc(100% - 4rem));
+  --gutter: 2rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* Page width and outer margin. Sections add var(--gutter) as inner padding. */
+main {
+  width: var(--page-width);
+  margin-inline: auto;
+}
+
+/* ==========================================================================
+   Typography and links
+   ========================================================================== */
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+}
+
+h1 {
+  letter-spacing: -0.04em;
+}
+
+.teal-text {
+  color: var(--teal);
+}
+
+.purple-text {
+  color: var(--purple);
+}
+
+.yellow-text {
+  color: var(--yellow);
+}
+
+a {
+  color: inherit;
+}
+
+/* Visible focus for keyboard users only (mouse clicks don't trigger it) */
+a:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 4px;
+}
+
+/* Hides text visually but keeps it available to screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.4rem;
+  border: 1px solid transparent;
+  border-radius: 0.4rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.button--primary {
+  background: var(--teal);
+  color: var(--bg);
+}
+
+.button--secondary {
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+
+.button--secondary:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.button svg {
+  transition: transform 0.2s ease;
+}
+
+.button:hover svg {
+  transform: translateX(6px);
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--page-width);
+  margin-inline: auto;
+  padding: 2rem var(--gutter) 0;
+}
+
+.site-logo {
+  display: block;
+}
+
+.site-logo img {
+  display: block;
+  width: auto;
+  height: 2.25rem;
+}
+
+.site-nav {
+  display: flex;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: var(--text);
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 90vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(380px, 0.65fr);
+  align-items: center;
+  padding: 5rem var(--gutter);
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.separator {
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+.hero h1 {
+  width: 110%;
+  max-width: 900px;
+  margin: 2rem 0;
+  font-size: clamp(4rem, 6.5vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+  color: var(--text);
+}
+
+.hero-intro {
+  width: 80%;
+  max-width: 650px;
+  font-size: 1.15rem;
+  line-height: 1.65;
+}
+
+/* The secondary, lighter line under the introduction */
+.hero-intro--aside {
+  max-width: 590px;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.hero-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.hero-image {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: -5rem;
+}
+
+.portrait {
+  display: block;
+  width: min(42vw, 570px);
+  max-width: none;
+  height: auto;
+}
+
+.dot-grid {
+  position: absolute;
+  left: -40px;
+  bottom: 8%;
+  z-index: -1;
+  width: 250px;
+  height: 150px;
+  background-image: radial-gradient(
+    circle,
+    rgba(27, 191, 174, 0.55) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 16px 16px;
+  mask-image: linear-gradient(to right, black, transparent);
+}
+
+.dot-grid--top {
+  left: auto;
+  right: 6rem;
+  top: 8%;
+  bottom: auto;
+  transform: rotate(90deg);
+}
+
+/* ==========================================================================
+   Section heading (e.g. "01 — Selected work")
+   ========================================================================== */
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.section-heading > span:first-child {
+  color: var(--teal);
+}
+
+.section-heading-line {
+  width: 40px;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.section-heading h2 {
+  margin: 0;
+  font: inherit;
+  color: var(--muted);
+}
+
+.view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+  color: var(--teal);
+  text-decoration: none;
+}
+
+.view-all svg {
+  transition: transform 0.2s ease;
+}
+
+.view-all:hover svg {
+  transform: translateX(5px);
+}
+
+/* ==========================================================================
+   Work section and project cards (shared)
+   ========================================================================== */
+
+.work {
+  padding: 4rem var(--gutter);
+}
+
+/* Accent colour per card, set with the `accent` prop in ProjectCard */
+.project--yellow {
+  --accent: var(--yellow);
+}
+
+.project--purple {
+  --accent: var(--purple);
+}
+
+.project-number {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: var(--accent, var(--teal));
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+}
+
+.project-category {
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.project-description {
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--teal);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.project-link svg {
+  transition: transform 0.2s ease;
+}
+
+.project-link:hover svg {
+  transform: translateX(5px);
+}
+
+.project-visual-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-visual-link img {
+  transition: transform 0.3s ease;
+}
+
+.project-visual-link:hover img {
+  transform: scale(1.015);
+}
+
+/* ==========================================================================
+   Featured project
+   ========================================================================== */
+
+.project--featured {
+  display: grid;
+  grid-template-columns: minmax(280px, 32%) minmax(0, 68%);
+  align-items: center;
+  gap: 4rem;
+  padding: 2rem 0 4rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.project--featured .project-content {
+  max-width: 380px;
+}
+
+.project--featured .project-number {
+  display: none;
+}
+
+.project--featured h3 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(2.25rem, 3vw, 3.25rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+/* Lets the browser frame bleed slightly past the right edge */
+.project--featured .project-visual {
+  width: calc(100% + 5rem);
+  margin-right: -5rem;
+}
+
+/* Browser frame */
+
+.browser-window {
+  overflow: hidden;
+  width: 100%;
+  background: #11161a;
+  border: 1px solid #343c42;
+  border-radius: 8px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.3);
+}
+
+.browser-window img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  height: 38px;
+  padding: 0 13px;
+  background: linear-gradient(180deg, #20272d, #171c20);
+  border-bottom: 1px solid #30383e;
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+
+.browser-controls {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.browser-controls span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #899198;
+}
+
+.browser-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  color: #c6cbd0;
+}
+
+.browser-tab-icon {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  background: var(--teal);
+  border-radius: 3px;
+  color: var(--bg);
+  font-size: 0.45rem;
+  font-weight: 700;
+}
+
+.browser-address {
+  flex: 1;
+  max-width: 320px;
+  margin-inline: auto;
+  padding: 0.35rem 1rem;
+  background: #101417;
+  border: 1px solid #293037;
+  border-radius: 999px;
+  text-align: center;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.browser-menu {
+  letter-spacing: 0.1em;
+}
+
+/* ==========================================================================
+   Compact projects
+   ========================================================================== */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4rem;
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.project--compact {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.project--compact h3 {
+  margin: 0.75rem 0;
+  font-size: clamp(1.7rem, 2.2vw, 2.3rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.project--compact .project-category {
+  margin: 0 0 1rem;
+}
+
+.project--compact .project-description {
+  font-size: 0.95rem;
+}
+
+/*
+  Offset border: two shadows shifted 10px down/right. The first (page
+  background, 1px smaller) masks the second (accent), leaving a 1px line.
+  Shadows aren't clipped by the element's own overflow: hidden.
+*/
+.project--compact .project-visual {
+  position: relative;
+  isolation: isolate;
+  height: 230px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow:
+    10px 10px 0 -1px var(--bg),
+    10px 10px 0 0 var(--accent, var(--line-strong));
+}
+
+.project--compact .project-visual-link {
+  height: 100%;
+}
+
+.project--compact .project-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+}
+
+.project-badge {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  padding: 0.45rem 0.7rem;
+  background: rgba(16, 18, 20, 0.9);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  color: var(--accent);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+
+.contact-cta {
+  padding: 3rem var(--gutter) 4rem;
+}
+
+.contact-heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.contact-line {
+  width: 20px;
+  height: 2px;
+  background: var(--teal);
+}
+
+.contact-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.contact-content p {
+  margin: 0;
+  font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+.contact-button {
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+/*
+  The footer's top line should span the content width, like the other
+  dividers, so the footer is narrower than the page by one gutter each side
+  instead of using padding.
+*/
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  width: calc(var(--page-width) - (var(--gutter) * 2));
+  margin-inline: auto;
+  padding: 2rem 0 3rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer-nav a {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-footer-nav a:hover {
+  color: var(--text);
+}
+
+/* ==========================================================================
+   Responsive (largest to smallest, so smaller screens override larger)
+   ========================================================================== */
+
+@media (max-width: 1500px) {
+  .project--featured .project-visual {
+    width: calc(100% + 2rem);
+    margin-right: -2rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1000px) {
+  .hero {
+    grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+    gap: 1rem;
+    padding: 4rem var(--gutter);
+  }
+
+  .hero h1 {
+    width: 100%;
+    font-size: clamp(3.5rem, 7vw, 5rem);
+  }
+
+  .hero-image {
+    margin-left: -2rem;
+  }
+
+  .portrait {
+    width: min(45vw, 450px);
+  }
+}
+
+@media (max-width: 900px) {
+  .project--featured {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .project--featured .project-content {
+    max-width: 600px;
+  }
+
+  .project--featured .project-visual {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .contact-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: auto;
+    padding: 3rem var(--gutter);
+  }
+
+  .hero-content {
+    max-width: none;
+  }
+
+  .hero h1 {
+    width: 100%;
+    max-width: 650px;
+    font-size: clamp(2.4rem, 10.5vw, 5rem);
+  }
+
+  .hero-intro,
+  .hero-intro--aside {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .hero-image {
+    order: 3;
+    width: 100%;
+    margin: 2.5rem 0 0;
+    justify-content: center;
+  }
+
+  .portrait {
+    width: min(100%, 440px);
+  }
+
+  .hero-actions {
+    order: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --page-width: calc(100% - 2rem);
+    --gutter: 1.5rem;
+  }
+
+  .site-header {
+    padding-top: 1.5rem;
+  }
+
+  .site-nav {
+    gap: 1.5rem;
+  }
+
+  .eyebrow {
+    flex-wrap: wrap;
+    row-gap: 0.25rem;
+    font-size: clamp(0.62rem, 2.5vw, 0.8rem);
+    gap: 0.35rem;
+    letter-spacing: 0.04em;
+  }
+
+  .section-heading {
+    margin-bottom: 2rem;
+  }
+
+  .view-all {
+    display: none;
+  }
+
+  .project--featured {
+    padding: 1rem 0 3rem;
+  }
+
+  .project--featured h3 {
+    font-size: 2.75rem;
+  }
+
+  .project--compact {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Respect the operating system's "reduce motion" setting */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
